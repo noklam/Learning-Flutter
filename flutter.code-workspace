@@ -1,0 +1,16 @@
+{
+	"folders": [],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#d49993",
+			"titleBar.inactiveBackground": "#d4999399",
+			"titleBar.activeForeground": "#15202b",
+			"titleBar.inactiveForeground": "#15202b99",
+			"panel.border": "#e3bbb7",
+			"sideBar.border": "#e3bbb7",
+			"editorGroup.border": "#e3bbb7",
+			"tab.activeBorder": "#e3bbb7"
+		},
+		"peacock.color": "#d49993"
+	}
+}
