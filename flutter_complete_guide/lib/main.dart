@@ -17,34 +17,56 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
-  var _questions = [
-    'This is Question 1',
-    'Yet another Question 2',
-    'Final Question3'
-  ];
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
-    print('This is my answer, hehe');
+    if (_questionIndex < _questions.length) {
+      print('We have more questions!');
+    } else {
+      print('no more questions!');
+    }
+    print(_questionIndex);
   }
 
+  var _questions = [
+    {
+      'questionText': 'Question1',
+      'answer': ['Answer', 'Answer', 'Answer']
+    },
+    {
+      'questionText': 'Question2',
+      'answer': ['Answer', 'Answer', 'Answer']
+    },
+    {
+      'questionText': 'Question3',
+      'answer': ['Answer', 'Answer', 'Answer']
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Hi Nok'),
-          ),
-          body: Column(
-            children: [
-              Question(_questions.elementAt(_questionIndex)),
-              RaisedButton(child: Text('Answer 1'), onPressed: answerQuestion),
-              Answer(),
-              Answer(),
-            ],
-          )),
+        appBar: AppBar(
+          title: Text('Hi Nok'),
+        ),
+        body: _questionIndex < _questions.length
+            ? Column(
+                children: [
+                  Question(
+                    _questions[_questionIndex]['questionText'],
+                  ),
+                  ...(_questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) {
+                    return Answer(_answerQuestion, answer);
+                  }).toList()
+                ],
+              )
+            : Center(
+                child: Text('You did it! 🤣🤣'),
+              ),
+      ),
     );
   }
 }
