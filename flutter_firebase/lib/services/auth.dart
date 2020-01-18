@@ -65,9 +65,14 @@ class AuthService {
   }
 
   // sign out
-  Future<bool> googleSignout() async {
-    await _auth.signOut();
-    // await googleSignIn.signOut();
-    return true;
+  Future<bool> signOut() async {
+    try {
+      await _auth.signOut();
+      // await googleSignIn.signOut();
+      return true;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
   }
 }
