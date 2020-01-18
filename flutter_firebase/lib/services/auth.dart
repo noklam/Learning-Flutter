@@ -33,16 +33,13 @@ class AuthService {
   // final GoogleSignIn googleSignIn = GoogleSignIn();
 
   // sign in with email & password
-  Future<FirebaseUser> signIn(String email, String password) async {
+  Future<User> signIn(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-      assert(user != null);
-      assert(await user.getIdToken() != null);
       final FirebaseUser currentUser = await _auth.currentUser();
-      assert(user.uid == currentUser.uid);
-      return user;
+      return _userFromFirebaseUser(user);
     } catch (e) {
       handleError(e);
       return null;
@@ -50,14 +47,12 @@ class AuthService {
   }
 
   // register with email & password
-  Future<FirebaseUser> signUp(email, password) async {
+  Future<User> signUp(email, password) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-      assert(user != null);
-      assert(await user.getIdToken() != null);
-      return user;
+      return _userFromFirebaseUser(user);
     } catch (e) {
       handleError(e);
       return null;
