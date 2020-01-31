@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/main.dart';
+// import 'package:flutter_firebase/main.dart';
 import 'package:flutter_firebase/models/user.dart';
 import 'package:flutter_firebase/screens/authenticate/authenticate.dart';
 import 'package:flutter_firebase/screens/home/home.dart';
